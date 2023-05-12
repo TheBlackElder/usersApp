@@ -43,6 +43,7 @@
             </td>
             <td>
               <form method="POST" action="/users/<%= id %>/delete">
+                <input type="hidden" name="id" value="<%= id %>">
                 <button class="btn btn-primary" type="submit">Delete</button>
               </form>
             </td>

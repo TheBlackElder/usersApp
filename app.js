@@ -127,15 +127,33 @@ app.get("/users/:id", (req, res) => {
   }
 });
 
-app.delete("/users/:id", (req, res) => {
-  const id = req.params.users[id];
- if (users.hasOwnProperty(id)) {
-    delete users[id];
- }
-    res.status(200).send('User deleted successfully');
+app.post("/users/:id/update", (req, res) => {
+  const userID = req.body.id;
+ 
+  if (!users.hasOwnProperty(userID)) {
 
+    res.status(404).send('User not found');
+  } else {
+ 
+    delete users[userID];
+   
+    res.redirect("/");
+    }
 });
 
+app.post("/users/:id/delete", (req, res) => {
+  const userID = req.body.id;
+ 
+  if (!users.hasOwnProperty(userID)) {
+
+    res.status(404).send('User not found');
+  } else {
+ 
+    delete users[userID];
+   
+    res.redirect("/");
+    }
+});
 
 // app.post("/users/:id/show", (req, res) => {
 //   const userID = req.session.userId;
