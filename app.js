@@ -37,12 +37,14 @@ const users = {
 const profileForUser = (users) => {
   let result = {};
   for (const id in users) {
-    if (users[id]) {
-      result[id] = users;
+    if (users[userID].id === userID) {
+      result[id] = users[id];
     }
   }
   return result;
 };
+
+
 
 const generateRandomString = () => {
   const characters =
@@ -72,21 +74,7 @@ app.get("/users/new", (req, res) => {
   res.render("users_new", templateVars);
 });
 
-// app.post("/users/new", (req, res) => {
-//   res.render("/");
-// });
 
-// app.post("/", (req, res) => {
-//   const firstName = req.body.firstName;
-//   const lastName = req.body.lastName;
-//   const userBirthday = req.body.dateOfBirth;
-//   const userPicture = req.body.profilePicture;
-//   const userBio = req.body.bio;
-//   const templateVars = {
-//  firstName,lastName, userBirthday, userPicture, userBio
-//   };
-//   res.redirect("/", templateVars);
-// });
 
 app.post("/", (req, res) => {
   const newUserID = generateRandomString();
@@ -94,24 +82,20 @@ app.post("/", (req, res) => {
   users[newUserID] = 
   {newUserID, firstName, lastName, dateOfBirth, profilePicture, bio }
 
-  const newUser = {
-    firstName, lastName, dateOfBirth, profilePicture, bio
-  }
-  // users.id.push(newUser);
 
   res.render('users_index', { users });
   res.redirect("/");
 });
 
-// app.get("/users/:id", (req, res) => {
-
-//   if (profileForUser(users)) {
-//     const templateVars = {
-//       user: users,
-//     };
-//     return res.render("users_show", templateVars);
-//   }
-// });
+app.get("/users/:id/view", (req, res) => {
+const userID = req.params.id;
+const user = users[userID];
+  if (!user) {
+    res.status(404).send('User not found');
+    } else {
+    return res.render("users_show", {user});
+  }
+});
 
 
 
@@ -127,19 +111,19 @@ app.get("/users/:id", (req, res) => {
   }
 });
 
-app.post("/users/:id/update", (req, res) => {
-  const userID = req.body.id;
+// app.post("/users/:id/update", (req, res) => {
+//   const userID = req.body.id;
  
-  if (!users.hasOwnProperty(userID)) {
+//   if (!users.hasOwnProperty(userID)) {
 
-    res.status(404).send('User not found');
-  } else {
+//     res.status(404).send('User not found');
+//   } else {
  
-    delete users[userID];
+//     delete users[userID];
    
-    res.redirect("/");
-    }
-});
+//     res.redirect("/");
+//     }
+// });
 
 app.post("/users/:id/delete", (req, res) => {
   const userID = req.body.id;

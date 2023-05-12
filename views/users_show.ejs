@@ -27,10 +27,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/">My URLs</a>
-            <a class="nav-item nav-link" href="/">Create New URL</a>
-          </div>
+    
         </div>
       </nav>
     </header>
@@ -40,14 +37,14 @@
         <h5 class="card-title">
 
         </h5>
-        <p class="card-text">
+        <h2 class="card-text">
             <% for (let usa in user) { %>
         
             <%= user[usa].firstName %>
             <%= user[usa].lastName %>
             <% } %>
       
-        </p>
+            </h2>
       </div>
 
       

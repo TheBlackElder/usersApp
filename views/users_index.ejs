@@ -33,11 +33,10 @@
           <tbody>
           <% for (let id in users) { %>
           <tr>
-            <a href="/users/show"><td><%= users[id].firstName %></td>
-          </a>
+           <td><%= users[id].firstName %></td>
           <td><%= users[id].lastName %></td>
             <td>
-              <form method="GET" action="/users/show">
+              <form method="GET" action="/users/<%= id %>/view">
                 <button  class="btn btn-primary" type="submit">View</button>
               </form>
             </td>
