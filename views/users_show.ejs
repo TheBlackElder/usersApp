@@ -41,9 +41,16 @@
 
         </h5>
         <p class="card-text">
-     
+            <% for (let usa in user) { %>
+        
+            <%= user[usa].firstName %>
+            <%= user[usa].lastName %>
+            <% } %>
+      
         </p>
       </div>
+
+      
       <div class="card-footer text-muted">
         <p>Edit URL</p>
         <form action="/" method="POST">

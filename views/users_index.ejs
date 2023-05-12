@@ -31,18 +31,18 @@
           </tr>
         </thead>
           <tbody>
-          <% for (let usa in user) { %>
+          <% for (let id in users) { %>
           <tr>
-            <a href="/users/show"><td><%= user[usa].firstName %></td>
+            <a href="/users/show"><td><%= users[id].firstName %></td>
           </a>
-          <td><%= user[usa].lastName %></td>
+          <td><%= users[id].lastName %></td>
             <td>
               <form method="GET" action="/users/show">
                 <button  class="btn btn-primary" type="submit">View</button>
               </form>
             </td>
             <td>
-              <form method="POST" action="/<%= usa %>/delete">
+              <form method="POST" action="/users/<%= id %>/delete">
                 <button class="btn btn-primary" type="submit">Delete</button>
               </form>
             </td>
