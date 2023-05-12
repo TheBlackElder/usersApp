@@ -15,22 +15,49 @@
       crossorigin="anonymous"
     />
 
-    <title>New URL - TinyApp </title>
+    <title>New User - USAS </title>
   </head>
 
   <body>
     <%- include('partials/_header') %>
 
     <main style="margin: 1em">
-      <h3>Create TinyURL</h3>
-      <form class="form-inline" action="/urls" method="POST">
+      <h3>Add A New User </h3>
+      <form action="/" method="POST">
         <div class="form-group mb-2">
-          <label for="longURL">Enter a URL:</label>
+          <label for="firstName">First Name</label>
           <input
             class="form-control"
             type="text"
-            name="longURL"
-            placeholder="http://"
+            name="firstName"
+            style="width: 300px; margin: 1em"
+          />
+          <label for="lastName">Last Name</label>
+          <input
+            class="form-control"
+            type="text"
+            name="lastName"
+            style="width: 300px; margin: 1em"
+          />
+          <label for="DOB">Date of Birth</label>
+          <input
+            class="form-control"
+            type="text"
+            name="Birthday"
+            style="width: 300px; margin: 1em"
+          />
+          <label for="profilePic">Profile Picture</label>
+          <input
+            class="form-control"
+            type="text"
+            name="profilePic"
+            style="width: 300px; margin: 1em"
+          />
+          <label for="bio">Biography</label>
+          <input
+            class="form-control"
+            type="text"
+            name="bio"
             style="width: 300px; margin: 1em"
           />
           <button type="submit" class="btn btn-primary">Submit</button>
