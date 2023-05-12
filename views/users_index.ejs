@@ -23,21 +23,22 @@
       <h3>Users</h3>
       <table class="table">
         <thead>
-          <tr>
+          <tr>      
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
-            <button><th scope="col">Edit</th></button>
+            <button><th scope="col">View Profile</th></button>
             <button><th scope="col">Delete</th></button>
           </tr>
         </thead>
           <tbody>
           <% for (let usa in user) { %>
           <tr>
-            <td><%= user[usa].firstName %></td>
-            <td><%= user[usa].lastName %></td>
+            <a href="/users/show"><td><%= user[usa].firstName %></td>
+          </a>
+          <td><%= user[usa].lastName %></td>
             <td>
-              <form method="GET" action="/<%= usa %>">
-                <button class="btn btn-primary" type="submit">Edit</button>
+              <form method="GET" action="/users/show">
+                <button  class="btn btn-primary" type="submit">View</button>
               </form>
             </td>
             <td>

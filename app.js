@@ -29,6 +29,16 @@ const users = {
   },
 };
 
+// const profileForUser = (userID, urlDatabase) => {
+//   let result = {};
+//   for (const id in users) {
+//     if (urlDatabase[id].userID  === userID) {
+//       result[id] = urlDatabase[id];
+//     }
+//   }
+//   return result;
+// };
+
 app.get("/", (req, res) => {
   res.status(200);
   const templateVars = {
@@ -37,12 +47,47 @@ app.get("/", (req, res) => {
   res.render("users_index", templateVars);
 });
 
+
 app.get("/users/new", (req, res) => {
   const templateVars = {
     user: users,
   };
   res.render("users_new", templateVars);
 });
+
+app.get("/users/:id", (req, res) => {
+
+  if (users) {
+    const templateVars = {
+      user: users,
+    };
+    return res.render("users_show", templateVars);
+  }
+});
+
+
+// app.post("/urls/:shortURL/delete", (req, res) => {
+//   const userID = req.session.userId;
+//   const authURLs = urlsForUser(userID, urlDatabase);
+//   if (authURLs) {
+//     delete urlDatabase[req.params.shortURL];
+//     return res.redirect("/urls");
+//   } else {
+//     res.status(401).send("<html><h3>Access denied<h3><html>");
+//     res.redirect("/login");
+//   }
+// });
+
+
+// app.post("/users/:id/show", (req, res) => {
+//   const userID = req.session.userId;
+//   const authURLs = urlsForUser(userID, users);
+//   if (user) {
+//     return res.redirect("/users/show");
+//   } else {
+//     res.status(401).send("<html><h3>Access denied<h3><html>");
+//   }
+// });
 
 app.listen(PORT, (error) => {
   if (!error)
