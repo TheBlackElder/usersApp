@@ -111,19 +111,27 @@ app.get("/users/:id", (req, res) => {
   }
 });
 
-// app.post("/users/:id/update", (req, res) => {
-//   const userID = req.body.id;
- 
-//   if (!users.hasOwnProperty(userID)) {
+app.post("/users/:id/update", (req, res) => {
+  const userID = req.params.id;
+  const user = users[userID]
+  const {firstName, lastName, dateOfBirth, profilePicture, bio } = req.body
+  users[userID] = 
+  {...users[userID], firstName, lastName, dateOfBirth, profilePicture, bio }
 
-//     res.status(404).send('User not found');
-//   } else {
- 
-//     delete users[userID];
-   
-//     res.redirect("/");
-//     }
-// });
+  res.redirect(`/users/${userID}/show`)
+
+
+});
+
+app.get("/users/:id/show", (req, res) => {
+const userID = req.params.id;
+const user = users[userID];
+  if (!user) {
+    res.status(404).send('User not found');
+    } else {
+    return res.render("users_show", {user});
+  }
+});
 
 app.post("/users/:id/delete", (req, res) => {
   const userID = req.body.id;

@@ -46,7 +46,8 @@
             <img> <%= user.profilePic %></img>
             <h5> <%= user.bio %></h5>
       </div>
-      <form action="/" method="POST">
+      <form method="POST" action="/users/<%= user.id %>/update">
+        <input type="hidden" name="id" value="<%= user.id %>">
         <div class="form-group mb-2">
           <label for="firstName">First Name</label>
           <input
@@ -88,7 +89,7 @@
             style="width: 300px; margin: 1em"
             value="  <%= user.bio %>"
           />
-          <button type="submit" class="btn btn-primary" onClick="redirect(`/`)">Update</button>
+          <button type="submit" class="btn btn-primary" >Update</button>
         </div>
       </form>
       
