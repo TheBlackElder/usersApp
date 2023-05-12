@@ -38,24 +38,63 @@
 
         </h5>
         <h2 class="card-text">
-            <% for (let usa in user) { %>
-        
-            <%= user[usa].firstName %>
-            <%= user[usa].lastName %>
-            <% } %>
-      
+    
+            <%= user.firstName %>
+            <%= user.lastName %>
             </h2>
+            <h3> <%= user.dateOfBirth %></h3>
+            <img> <%= user.profilePic %></img>
+            <h5> <%= user.bio %></h5>
       </div>
-
+      <form action="/" method="POST">
+        <div class="form-group mb-2">
+          <label for="firstName">First Name</label>
+          <input
+            class="form-control"
+            type="text"
+            name="firstName"
+            style="width: 300px; margin: 1em"
+            value="  <%= user.firstName %>"
+          />
+          <label for="lastName">Last Name</label>
+          <input
+            class="form-control"
+            type="text"
+            name="lastName"
+            style="width: 300px; margin: 1em"
+            value="  <%= user.lastName %>"
+          />
+          <label for="DOB">Date of Birth</label>
+          <input
+            class="form-control"
+            type="date"
+            name="birthday"
+            style="width: 300px; margin: 1em"
+            value=" <%= user.dateOfBirth %>"
+          />
+          <label for="profilePic">Profile Picture</label>
+          <input
+            class="form-control"
+            type="url"
+            name="profilePic"
+            style="width: 300px; margin: 1em"
+            value="   <%= user.profilePic %>"
+          />
+          <label for="bio">Biography</label>
+          <input
+            class="form-control"
+            type="text"
+            name="bio"
+            style="width: 300px; margin: 1em"
+            value="  <%= user.bio %>"
+          />
+          <button type="submit" class="btn btn-primary" onClick="redirect(`/`)">Update</button>
+        </div>
+      </form>
       
       <div class="card-footer text-muted">
-        <p>Edit URL</p>
-        <form action="/" method="POST">
-          <label for="longURL">New URL:</label>
-          <input type="text" name="longURL" placeholder="" />
-          <button type="submit" class="btn btn-primary">Update</button>
-        </form>
-      </div>
+ 
+       
     </div>
     <!-- Bootstrap JS -->
     <script
