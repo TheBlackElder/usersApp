@@ -13,7 +13,7 @@ const users = {
     firstName: "Landon",
     lastName: "Pryce",
     dateOfBirth: "1992-09-21",
-    profilePicture: `file:///Users/htbsle/Desktop/The%20Black%20Elder/The%20Black%20Elder%20main%20logo.png`,
+    profilePicture: `./images/Jason_pic.jpeg`,
     bio: `I hail from the streets of Scarborough as a self-taught multimedia artist versed in writing poetry, rapping, playing piano and creating visual and digital art.`,
   },
   user2ID: {
@@ -114,7 +114,7 @@ app.get("/users/:id", (req, res) => {
 app.post("/users/:id/update", (req, res) => {
   const userID = req.params.id;
   const user = users[userID]
-  // const bio = req.body.bio ? req.body.bio : user.bio;
+  const bio = req.body.bio ? req.body.bio : user.bio;
   const {firstName, lastName, dateOfBirth, profilePicture } = req.body
 
   users[userID] = 
