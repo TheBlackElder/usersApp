@@ -12,41 +12,32 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark bg-success">
-        <a class="navbar-brand" href="/">USAS</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    
-        </div>
-      </nav>
-    </header>
+    <%- include('partials/_header') %>
+  
     <div class="card text-center">
       <div class="card-header"></div>
       <div class="card-body">
         <h5 class="card-title">
-
+          
+          <div class="card mb-3 mx-auto " style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="../images/img1.jpg" class="img-fluid rounded-start" alt="Image" width="128" height="128">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= user.firstName %>
+                    <%= user.lastName %></h5>
+                    <p class="card-text"><small class="text-body-secondary"><%= user.dateOfBirth %></small></p>
+                  <p class="card-text"> <%= user.bio %></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </h5>
-        <h2 class="card-text">
-    
-            <%= user.firstName %>
-            <%= user.lastName %>
-            </h2>
-            <h3> <%= user.dateOfBirth %></h3>
-            <img> <%= user.profilePic %></img>
-            <h5> <%= user.bio %></h5>
       </div>
-      <form method="POST" action="/users/<%= user.id %>/update">
+   
+      <form method="POST" action="/users/<%= user.id %>/update" class="mx-auto">
         <input type="hidden" name="id" value="<%= user.id %>">
         <div class="form-group mb-2">
           <label for="firstName">First Name</label>
@@ -81,16 +72,15 @@
             style="width: 300px; margin: 1em"
             value="   <%= user.profilePic %>"
           />
-          <label for="bio">Biography</label>
-          <input
-            class="form-control"
-            type="text"
-            name="bio"
-            style="width: 300px; margin: 1em"
-            value="  <%= user.bio %>"
-          />
+          <div class="mb-3">
+            <label for="formFileSm" class="form-label">Upload Profile Picture</label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file">
+          </div>
+          <label for="bio" class="form-label">Biography</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="  <%= user.bio %>"> <%= user.bio %></textarea>
+ 
           <button type="submit" class="btn btn-primary" >Update</button>
-        </div>
+        </div>  
       </form>
       
       <div class="card-footer text-muted">

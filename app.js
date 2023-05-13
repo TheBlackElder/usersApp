@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
-// app.use(express.urlencoded({ extended: true }));
+
 
 app.set("view engine", "ejs");
 
@@ -12,15 +12,15 @@ const users = {
     id: "userID",
     firstName: "Landon",
     lastName: "Pryce",
-    dateOfBirth: `May 16 1992`,
-    profilePicture: `https://www.theblackelder.com/uploads/b/66d350fdbe339ce2e3ff019e88f59d280925839c3758d365cd53a77936e02026/theblackelder.com%20plastic%20overlay_1669829110.png?width=800&optimize=medium&height=480&fit=cover&dpr=2`,
+    dateOfBirth: "1992-09-21",
+    profilePicture: `file:///Users/htbsle/Desktop/The%20Black%20Elder/The%20Black%20Elder%20main%20logo.png`,
     bio: `I hail from the streets of Scarborough as a self-taught multimedia artist versed in writing poetry, rapping, playing piano and creating visual and digital art.`,
   },
   user2ID: {
     id: "user2ID",
     firstName: "Amelia",
     lastName: "Gracious",
-    dateOfBirth: `May 22 1999`,
+    dateOfBirth: "1999-05-07",
     profilePicture: `https://www.theblackelder.com/uploads/b/66d350fdbe339ce2e3ff019e88f59d280925839c3758d365cd53a77936e02026/theblackelder.com%20plastic%20overlay_1669829110.png?width=800&optimize=medium&height=480&fit=cover&dpr=2`,
     bio: `I hail from the streets of Scarborough as a self-taught multimedia artist versed in writing poetry, rapping, playing piano and creating visual and digital art.`,
   },
@@ -28,7 +28,7 @@ const users = {
     id: "user3ID",
     firstName: "Leo",
     lastName: "Clarke",
-    dateOfBirth: `April 16 1992`,
+    dateOfBirth: "1998-06-17",
     profilePicture: `https://www.theblackelder.com/uploads/b/66d350fdbe339ce2e3ff019e88f59d280925839c3758d365cd53a77936e02026/theblackeder.com%20plastic%20overlay_1669829110.png?width=800&optimize=medium&height=480&fit=cover&dpr=2`,
     bio: `I hail from the streets of Scarborough as a self-taught multimedia artist versed in writing poetry, rapping, playing piano and creating visual and digital art.`,
   },
@@ -114,7 +114,9 @@ app.get("/users/:id", (req, res) => {
 app.post("/users/:id/update", (req, res) => {
   const userID = req.params.id;
   const user = users[userID]
-  const {firstName, lastName, dateOfBirth, profilePicture, bio } = req.body
+  // const bio = req.body.bio ? req.body.bio : user.bio;
+  const {firstName, lastName, dateOfBirth, profilePicture } = req.body
+
   users[userID] = 
   {...users[userID], firstName, lastName, dateOfBirth, profilePicture, bio }
 
@@ -122,6 +124,8 @@ app.post("/users/:id/update", (req, res) => {
 
 
 });
+
+
 
 app.get("/users/:id/show", (req, res) => {
 const userID = req.params.id;
@@ -147,15 +151,6 @@ app.post("/users/:id/delete", (req, res) => {
     }
 });
 
-// app.post("/users/:id/show", (req, res) => {
-//   const userID = req.session.userId;
-//   const authURLs = urlsForUser(userID, users);
-//   if (user) {
-//     return res.redirect("/users/show");
-//   } else {
-//     res.status(401).send("<html><h3>Access denied<h3><html>");
-//   }
-// });
 
 app.listen(PORT, (error) => {
   if (!error)
